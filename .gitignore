@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / env
+.env
+.env.*
+!.env.example
+*.local
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Logs
+logs/
+*.log
+
+# Claude Code local state
+.claude/settings.local.json
+.claude/worktrees/
+
+# OpenTelemetry local data
+otel-data/
