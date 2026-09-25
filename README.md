@@ -37,4 +37,24 @@ Claude Code / Agent SDK → OpenTelemetry Collector local → backend de visuali
 
 Proyecto en etapa inicial (solo scaffolding del repo). Próximos pasos según la spec: habilitar telemetría nativa, levantar el colector OpenTelemetry local, conectar backend de visualización, y construir el harness con el Claude Agent SDK.
 
-Spec completa (fuente de este resumen): documento de proyecto en Claude Desktop, "Spec Orquestador Claude Code con Observabilidad OpenTelemetry" (24-09-2026).
+## Estructura de documentación (`docs/`)
+
+Este repo se trabaja en conjunto desde dos superficies: **Claude Desktop** (proyecto "Orquestación de agentes", con la carpeta de este repo vinculada) para iterar specs y decisiones en lenguaje natural, y **Claude Code** (acá) para bajar esas decisiones a código real — subagentes, workflow, config de telemetría.
+
+`docs/` es la superficie de intercambio entre ambos y **sí está versionado en git** (no gitignorado): es la fuente de verdad de las decisiones del proyecto, con historial completo de su evolución.
+
+```
+docs/
+└── specs/          # Specs y documentos de diseño, iterados en Claude Desktop.
+                     # Claude Code las lee como insumo para generar/actualizar
+                     # agentes, workflows y código.
+```
+
+Convención de trabajo:
+
+1. La spec se itera en el chat del proyecto en Claude Desktop.
+2. Al cerrar una iteración, se deposita/actualiza el `.md` correspondiente en `docs/specs/`.
+3. Claude Code toma ese archivo como insumo, lo destila (ej. en este README) y lo materializa en código (`.claude/agents/*.md`, `.claude/workflows/*.js`, config OTEL, etc.).
+4. Todo queda commiteado junto al código que originó, para que la historia de git conecte cada decisión de diseño con su implementación.
+
+Spec vigente: [`docs/specs/orquestador-claude-code-observabilidad-otel.md`](docs/specs/orquestador-claude-code-observabilidad-otel.md) — "Spec Orquestador Claude Code con Observabilidad OpenTelemetry" (24-09-2026).
